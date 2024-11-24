@@ -11,6 +11,12 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Arrays;
 import java.util.List;
 
+
+import org.springframework.web.server.ResponseStatusException;
+import java.util.Arrays;
+import java.util.List;
+
+
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
@@ -51,9 +57,26 @@ public class OrderController {
         }
     }
 
+<<<<<<< HEAD
 
     @GetMapping("/queue")
     public List<Order> getOrdersQueue(){
         return orderRepository.findAllByStatusIn(Arrays.asList("NEW", "IN_PROGRESS"));
     }
+=======
+    @PutMapping("/takeNextOrder")
+    public Order takeNextOrder(){
+        List<Order> orders = orderRepository.findAllByStatusOrderByQueuePositionAsc("NEW");
+        if (!orders.isEmpty()){
+            Order nextOrder = orders.get(0);
+            nextOrder.setStatus("IN_PROGRESS");
+            orderRepository.save(nextOrder);
+            return nextOrder;
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No NEW orders in queue!");
+        }
+    }
+
+
+>>>>>>> testing
 }
