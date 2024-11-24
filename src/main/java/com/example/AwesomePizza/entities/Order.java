@@ -1,29 +1,32 @@
 package com.example.AwesomePizza.entities;
 
+import jakarta.persistence.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+<<<<<<< Updated upstream
     private Long Id;
     private String status;  // NEW, IN_PROCESS, COMPLETED
     private LocalDateTime orderTime = LocalDateTime.now();
 
+=======
+    private Long id;
+    private String status;  // NEW, IN_PROGRESS, COMPLETED
+    private LocalDateTime orderTime = LocalDateTime.now();
+    private Integer queuePosition;
+>>>>>>> Stashed changes
 
-    //Attribute's Value return//
     public Long getId() {
-        return Id;
+        return id;
     }
 
-    //Attribute's Value set//
-    public void setId(Long id){
-        this.Id = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getStatus() {
