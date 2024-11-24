@@ -47,7 +47,7 @@ public class OrderController {
             orderRepository.save(nextOrder);
             return nextOrder;
         } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No NEW orders in queue!")
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No NEW orders in queue!");
         }
     }
 
