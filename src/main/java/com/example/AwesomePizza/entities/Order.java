@@ -12,9 +12,10 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    private String status;  // NEW, IN_PROCESS, COMPLETED
+    private String status;  // NEW, IN_PROGRESS, COMPLETED
     private LocalDateTime orderTime = LocalDateTime.now();
 
+    private Integer queuePosition;
 
     //Attribute's Value return//
     public Long getId() {
@@ -40,5 +41,13 @@ public class Order {
 
     public void setOrderTime(LocalDateTime orderTime) {
         this.orderTime = orderTime;
+    }
+
+    public Integer getQueuePosition() {
+        return queuePosition;
+    }
+
+    public void setQueuePosition(Integer queuePosition) {
+        this.queuePosition = queuePosition;
     }
 }
