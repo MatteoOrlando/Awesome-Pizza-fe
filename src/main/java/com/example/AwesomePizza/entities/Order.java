@@ -9,17 +9,12 @@ import java.time.LocalDateTime;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-<<<<<<< HEAD
-    private Long Id;
-=======
 
     private Long id;
->>>>>>> testing
     private String status;  // NEW, IN_PROGRESS, COMPLETED
     private LocalDateTime orderTime = LocalDateTime.now();
     private Integer queuePosition;
 
-    private Integer queuePosition;
 
     public Long getId() {
         return id;
