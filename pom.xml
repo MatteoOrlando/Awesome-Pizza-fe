@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>AwesomePizza</artifactId>
+	<artifactId>AwesomePizzaBE</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>AwesomePizza</name>
 	<description>Sistema di Ordinazione per Awesome Pizza</description>
