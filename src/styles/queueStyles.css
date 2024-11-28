@@ -1,0 +1,33 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+}
+
+.btn {
+  margin-left: 10px;
+}
+
+.current-order {
+  background: #f9f9f9;
+  border: 2px solid #28a745;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
