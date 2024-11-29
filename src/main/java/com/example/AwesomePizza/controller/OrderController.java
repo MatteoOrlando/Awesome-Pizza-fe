@@ -16,8 +16,8 @@ public class OrderController {
     @Autowired
     private OrderRepository orderRepository;
 
-    @PostMapping("/")
-    public Order createOrder(){
+    @PostMapping
+    public Order createOrder() {
         Order order = new Order();
         order.setStatus("NEW");
         int queueSize = orderRepository.findAll().size();
@@ -26,21 +26,34 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
-    public Order updateOrder(@PathVariable Long id , @RequestParam String status) {
+    public Order updateOrder(@PathVariable Long id, @RequestParam String status) {
         Order order = orderRepository.findById(id).orElseThrow(RuntimeException::new);
         order.setStatus(status);
-        if (status.equals ("IN_PROGRESS")) {
-            order.setQueuePosition(1); //order set in progress will be always first in the queue
-        } else if(status.equals ("COMPLETED")){
+        if (status.equals("IN_PROGRESS")) {
+            order.setQueuePosition(1); // order set in progress will be always first in the queue
+        } else if (status.equals("COMPLETED")) {
             order.setQueuePosition(null);
         }
         return orderRepository.save(order);
     }
 
+    // Nuovo metodo per prendere un ordine specifico
+    @PutMapping("/{id}/take")
+    public Order takeOrder(@PathVariable Long id) {
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found"));
+        if (!order.getStatus().equals("NEW")) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Order is not in NEW status");
+        }
+        order.setStatus("IN_PROGRESS");
+        order.setQueuePosition(1); // Imposta come il primo in coda
+        return orderRepository.save(order);
+    }
+
     @PutMapping("/takeNextOrder")
-    public Order takeNextOrder(){
+    public Order takeNextOrder() {
         List<Order> orders = orderRepository.findAllByStatusOrderByQueuePositionAsc("NEW");
-        if (!orders.isEmpty()){
+        if (!orders.isEmpty()) {
             Order nextOrder = orders.get(0);
             nextOrder.setStatus("IN_PROGRESS");
             orderRepository.save(nextOrder);
@@ -51,7 +64,7 @@ public class OrderController {
     }
 
     @GetMapping("/queue")
-    public List<Order> getOrdersQueue(){
+    public List<Order> getOrdersQueue() {
         return orderRepository.findAllByStatusIn(Arrays.asList("NEW", "IN_PROGRESS"));
     }
 }

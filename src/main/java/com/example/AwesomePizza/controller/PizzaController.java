@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -15,14 +14,16 @@ public class PizzaController {
     @Autowired
     private PizzaRepository pizzaRepository;
 
-    @GetMapping("/")
-    public List<Pizza> getAllPizzas() {
-        return pizzaRepository.findAll();
+    @GetMapping
+    public ResponseEntity<List<Pizza>> getAllPizzas() {
+        List<Pizza> pizzas = pizzaRepository.findAll();
+        return new ResponseEntity<>(pizzas, HttpStatus.OK);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Pizza> createPizza(@RequestBody Pizza pizza) {
         Pizza savedPizza = pizzaRepository.save(pizza);
         return new ResponseEntity<>(savedPizza, HttpStatus.CREATED);
     }
 }
+
