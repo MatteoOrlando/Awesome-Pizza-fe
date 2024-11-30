@@ -1,17 +1,17 @@
 .footer {
   background: linear-gradient(to top, #aeaeaeeb, #e5e5e5fd);
-  color: #181818;
+  color: #121212;
   padding: 1.5rem 0;
   text-align: center;
-  position: relative;
-  bottom: 0;
   width: 100%;
-  border-top: 5px solid #da0a0ad4;
+  border-top: 5px inset #fa2b07ab;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  position: relative;
+  bottom: 0;
 }
 
 .footer-content {
@@ -29,15 +29,13 @@
   font-size: 0.9rem;
   text-align: center;
 }
-.footer-text {
-  font-size: 0.9rem;
-}
 
 .footer-icons {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 15px;
 }
+
 .icon {
   font-size: 1.7rem;
   color: #1a1a1adf;
@@ -46,7 +44,7 @@
 }
 
 .icon:hover {
-  color: #da0a0ad4;
+  color: #165517e6;
   transform: scale(1.3);
 }
 

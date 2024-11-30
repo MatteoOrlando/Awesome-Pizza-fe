@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AiFillHome } from 'react-icons/ai';
 import '../styles/navbarStyle.css';
 
-function Navbar() {
+function Navbar({ orderCount }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        {/* Div separato per il navbar-brand */}
         <div className="navbar-brand-container">
           <Link className="navbar-brand" to="/">
+            <AiFillHome className="home-icon" />
             Awesome Pizza
           </Link>
         </div>
@@ -16,7 +17,10 @@ function Navbar() {
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link className="nav-link" to="/order">
-                Order Pizza
+                Your Order
+                {orderCount > 0 && (
+                  <span className="order-badge">{orderCount}</span>
+                )}
               </Link>
             </li>
             <li className="nav-item">

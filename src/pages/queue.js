@@ -4,11 +4,15 @@ import '../styles/queueStyles.css';
 function Queue() {
   const [queue, setQueue] = useState([]);
   const [currentOrder, setCurrentOrder] = useState(null);
+  const [completedOrders, setCompletedOrders] = useState([]);
 
+  // Fetch queue and completed orders on mount
   useEffect(() => {
     fetchQueue();
+    loadCompletedOrders();
   }, []);
 
+  // Fetch pending and in-progress orders
   const fetchQueue = async () => {
     try {
       const response = await fetch('http://localhost:3001/orders/queue');
@@ -22,6 +26,19 @@ function Queue() {
     }
   };
 
+  // Load completed orders from localStorage
+  const loadCompletedOrders = () => {
+    const savedCompletedOrders =
+      JSON.parse(localStorage.getItem('completedOrders')) || [];
+    setCompletedOrders(savedCompletedOrders);
+  };
+
+  // Save completed orders to localStorage
+  const saveCompletedOrders = (orders) => {
+    localStorage.setItem('completedOrders', JSON.stringify(orders));
+  };
+
+  // Take an order
   const takeOrder = async (orderId) => {
     try {
       const response = await fetch(
@@ -35,72 +52,106 @@ function Queue() {
       }
       const updatedOrder = await response.json();
       setCurrentOrder(updatedOrder);
-      fetchQueue(); // Aggiorna la coda dopo aver preso l'ordine
+      fetchQueue();
     } catch (error) {
       console.error('Error taking order:', error.message);
     }
   };
 
-  const updateOrderStatus = async (orderId, status) => {
+  // Complete an order and save it
+  const completeOrder = async (orderId) => {
     try {
-      const response = await fetch(`http://localhost:3001/orders/${orderId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ status }),
-      });
+      const response = await fetch(
+        `http://localhost:3001/orders/${orderId}?status=COMPLETED`,
+        {
+          method: 'PUT',
+        }
+      );
       if (!response.ok) {
         throw new Error('Failed to update order status');
       }
       const updatedOrder = await response.json();
-      setCurrentOrder(null); // Resetta l'ordine corrente
-      fetchQueue(); // Aggiorna la coda dopo l'aggiornamento dello stato
+
+      // Add the order to completed orders
+      const updatedCompletedOrders = [...completedOrders, updatedOrder];
+      setCompletedOrders(updatedCompletedOrders);
+
+      // Save completed orders in localStorage
+      saveCompletedOrders(updatedCompletedOrders);
+
+      setCurrentOrder(null);
+      fetchQueue();
     } catch (error) {
-      console.error('Error updating order status:', error.message);
+      console.error('Error completing order:', error.message);
     }
   };
 
   return (
-    <div className="container mt-4">
+    <div className="queue-container">
       <h1>Order Queue</h1>
 
       {currentOrder ? (
         <div className="current-order">
           <h2>Current Order</h2>
-          <p>Order ID: {currentOrder.id}</p>
-          <p>Status: {currentOrder.status}</p>
+          <div className="order-details">
+            <p>
+              <strong>Order ID:</strong> {currentOrder.id}
+            </p>
+            <p>
+              <strong>Status:</strong> {currentOrder.status}
+            </p>
+          </div>
           <button
-            className="btn btn-success"
-            onClick={() => updateOrderStatus(currentOrder.id, 'COMPLETED')}
+            className="btn-complete"
+            onClick={() => completeOrder(currentOrder.id)}
           >
             Mark as Completed
           </button>
         </div>
       ) : (
-        <p>No order in progress</p>
+        <div className="no-order">
+          <p>No order in progress</p>
+        </div>
       )}
 
-      <h2>Queue</h2>
-      <ul className="list-group">
-        {queue.map((order) => (
-          <li className="list-group-item" key={order.id}>
-            <div className="d-flex justify-content-between align-items-center">
-              <span>
-                Order ID: {order.id}, Status: {order.status}
-              </span>
-              {order.status === 'NEW' && (
-                <button
-                  className="btn btn-primary"
-                  onClick={() => takeOrder(order.id)}
-                >
-                  Take Order
-                </button>
-              )}
-            </div>
-          </li>
-        ))}
-      </ul>
+      <div className="queue-section">
+        <h2>Pending Orders</h2>
+        <ul className="list-group">
+          {queue.map((order) => (
+            <li className="list-group-item" key={order.id}>
+              <div className="order-info">
+                <p>
+                  <strong>Order Number:</strong> {order.id}
+                </p>
+                <p>
+                  <strong>Status:</strong> {order.status}
+                </p>
+              </div>
+              <button className="btn-take" onClick={() => takeOrder(order.id)}>
+                Take Order
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="completed-section">
+        <h2>Orders Completed</h2>
+        <ul className="list-group">
+          {completedOrders.map((order) => (
+            <li className="list-group-item completed-item" key={order.id}>
+              <div className="order-info">
+                <p>
+                  <strong>Order Number:</strong> {order.id}
+                </p>
+                <p>
+                  <strong>Status:</strong> {order.status}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

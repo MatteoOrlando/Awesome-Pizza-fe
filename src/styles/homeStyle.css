@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 
-  background: linear-gradient(to top, #092009f7, #144f15dc);
+  background: linear-gradient(to top, #0b260bf0, #144f15dc);
 }
 
 .home-container {
@@ -100,7 +100,7 @@ body {
   padding: 0.5rem 1rem;
   color: #f1f1f1;
   border: none;
-  background-color: #0a6ad0;
+  background: linear-gradient(to top, #014185, #025bbb);
   text-decoration: none;
   font-weight: bold;
   font-size: 14px;
@@ -109,7 +109,7 @@ body {
 }
 
 .card-footer button:hover {
-  background-color: #0056b3;
+  background: linear-gradient(to top, #004794, #026fe3);
 }
 
 .title-with-icon {

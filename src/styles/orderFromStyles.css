@@ -1,0 +1,183 @@
+.btn-primary {
+  display: block;
+  width: 18%;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(to top, #013a77, #025bbb);
+  color: rgb(198, 198, 198);
+  border: none;
+  border-radius: 19px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  margin-top: 2rem;
+  margin: 1rem auto;
+}
+
+.btn-primary:disabled {
+  background-color: #5e5e5e;
+  cursor: not-allowed;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to top, #00448d, #026fe3);
+  color: rgb(225, 225, 225);
+}
+
+.btn-remove {
+  margin: 0 30.5%;
+  width: 40%;
+  background-color: #e60000c1;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-remove:hover {
+  background-color: #c50000f1;
+}
+
+.btn-pickup {
+  margin-top: 1rem;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.btn-pickup:hover {
+  background-color: #219150;
+}
+
+.completed-orders {
+  margin-top: 2rem;
+}
+
+.completed-orders h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #27ae60;
+}
+
+.form-container {
+  max-width: 950px;
+  margin: 160px auto;
+  padding: 2rem;
+  background: linear-gradient(to top, #d0d0d0eb, #e5e5e5fd);
+  border-radius: 10px;
+  box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+h1 {
+  font-style: oblique;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #000000f7;
+}
+
+.no-pizza-cart {
+  color: #333;
+  font-size: 1.2rem;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 900;
+}
+
+.order-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.order-card {
+  border: 3px outset #da0a0ad4;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), inset 0 0 10px #da0a0ad4;
+  transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 15px;
+  width: calc(25% - 1.5rem);
+}
+
+.order-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.order-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 10px;
+  margin-bottom: 0.5rem;
+}
+
+.pizza-name {
+  font-style: oblique;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2d2d2d;
+  margin: 3px;
+}
+
+.pizza-price {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #141414;
+  margin: 0;
+}
+
+.title-background {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%, 35px);
+  z-index: 1;
+  width: 20%;
+  height: 3rem;
+  background: linear-gradient(to top, #d0d0d000, #e5e5e500);
+  border-radius: 10px;
+  border: 1px inset #a60202;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 5);
+}
+
+.total-background {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 2;
+  width: 25%;
+  height: 2.8rem;
+  border: 2px outset #a60202;
+  height: 2.5rem;
+  background: linear-gradient(to top, #d0d0d000, #e5e5e500);
+  border-radius: 10px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 5);
+}
+
+.total {
+  position: relative;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #000000f7;
+}
