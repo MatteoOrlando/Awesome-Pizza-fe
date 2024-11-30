@@ -147,7 +147,7 @@ function OrderForm({ orders, setOrders }) {
         <div className="completed-orders">
           <h3>Completed Orders</h3>
           {completedOrders.map((order) => (
-            <div className="order-card" key={`completed-${order.id}`}>
+            <div className="pick-order-card" key={`completed-${order.id}`}>
               <p>Order Number: {order.id}</p>
               <p>Status: {order.status}</p>
               <button
