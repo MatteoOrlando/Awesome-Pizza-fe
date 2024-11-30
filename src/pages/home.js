@@ -7,6 +7,7 @@ import {
   FaDrumstickBite,
 } from 'react-icons/fa';
 import { GiMushroom, GiChiliPepper } from 'react-icons/gi';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 import '../styles/homeStyle.css';
 
 function Home({ addToOrder }) {
@@ -38,14 +39,34 @@ function Home({ addToOrder }) {
     if (lowerName.includes('quattro')) return <FaCheese className="icon" />;
     if (lowerName.includes('capricciosa'))
       return <GiMushroom className="icon" />;
+    if (lowerName.includes('meat')) return <FaDrumstickBite className="icon" />;
     if (lowerName.includes('diavola'))
       return <GiChiliPepper className="icon" />;
     if (lowerName.includes('bbq')) return <FaDrumstickBite className="icon" />;
     return <FaPizzaSlice className="icon" />;
   };
 
+  const handleAddToOrder = (pizza) => {
+    addToOrder(pizza);
+
+    // Show alert
+    Swal.fire({
+      title: 'Success!',
+      text: 'The pizza is added to the order cart!',
+      icon: 'success',
+      confirmButtonText: 'OK',
+      timer: 2000, // Auto-close after 2 seconds
+      timerProgressBar: true,
+      customClass: {
+        popup: 'swal-custom-popup',
+        title: 'swal-custom-title',
+        confirmButton: 'swal-custom-button',
+      },
+    });
+  };
+
   return (
-    <div className="container">
+    <div className="home-container">
       {pizzas.map((pizza) => (
         <div className="pizza-card" key={pizza.id}>
           <img src={pizza.imageUrl} alt={pizza.name} className="pizza-img" />
@@ -58,7 +79,10 @@ function Home({ addToOrder }) {
           </div>
           <div className="card-footer">
             <span className="card-price">${pizza.price.toFixed(2)}</span>
-            <button className="order-now" onClick={() => addToOrder(pizza)}>
+            <button
+              className="order-now"
+              onClick={() => handleAddToOrder(pizza)}
+            >
               Order Now
             </button>
           </div>

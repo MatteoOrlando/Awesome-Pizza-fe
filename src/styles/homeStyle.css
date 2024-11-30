@@ -1,51 +1,55 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #124813e9;
+
+  background: linear-gradient(to top, #092009f7, #144f15dc);
 }
 
-.container {
-  max-width: 1600px;
+.home-container {
+  background: linear-gradient(to top, #aeaeaeeb, #e5e5e5fd);
+  max-width: 1800px;
   margin: 0px auto;
-  margin-top: 80px;
-  margin-bottom: 30px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   padding: 2rem 1rem;
+  border-radius: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
   justify-content: center;
 }
 
 .pizza-card {
   border: 3px outset #da0a0ad4;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), inset 0 0 10px #da0a0ad4;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), inset 0 0 3px #da0a0ad4;
   transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
-  background-color: #fff;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
   border-radius: 15px;
-  width: calc(20% - 1.5rem);
+  width: calc(20% - 2rem);
   min-width: 200px;
 }
 
 .pizza-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
 }
 
 .pizza-img {
-  cursor: pointer;
+  border-radius: 5%;
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid #d6d6d6;
+  margin-bottom: 5px;
 }
 
 .card-body {
   flex: 1;
-  padding: 1rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,8 +58,8 @@ body {
 }
 
 .card-body .icon {
-  font-size: 1.5rem;
-  color: #ff4500;
+  font-size: 1.4rem;
+  color: #d90404eb;
   margin-left: 8px;
   pointer-events: none;
   cursor: default;
@@ -63,7 +67,7 @@ body {
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   color: #343a40;
   font-weight: bold;
   margin: 0;
@@ -85,23 +89,26 @@ body {
 }
 
 .card-price {
-  font-size: 1.25rem;
-  color: #28a745;
+  font-size: 1.7rem;
+  color: #11451d;
   font-weight: bold;
   margin: 0;
 }
 
-.card-footer a {
+.card-footer button {
+  cursor: pointer;
   padding: 0.5rem 1rem;
-  color: #fff;
+  color: #f1f1f1;
+  border: none;
   background-color: #0a6ad0;
   text-decoration: none;
   font-weight: bold;
-  border-radius: 5px;
+  font-size: 14px;
+  border-radius: 8px;
   transition: background-color 0.3s ease-in-out;
 }
 
-.card-footer a:hover {
+.card-footer button:hover {
   background-color: #0056b3;
 }
 
@@ -116,9 +123,28 @@ body {
   color: #ff4500;
 }
 
-/*  MODAL STYLE */
+/*  ALERT STYLE */
 
-/* Modale per immagine ingrandita */
+.swal-custom-popup {
+  background-color: #fffbe6;
+  border: 2px solid #ff9800;
+  border-radius: 10px;
+}
+
+.swal-custom-title {
+  color: #ff5722;
+  font-weight: bold;
+}
+
+.swal-custom-button {
+  background-color: #ff9800;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+/*  MODAL STYLE 
+
 .modal {
   position: fixed;
   top: 0;
@@ -169,3 +195,5 @@ body {
 .close:hover {
   background-color: rgba(255, 0, 0, 0.8);
 }
+
+*/
