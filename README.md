@@ -29,7 +29,7 @@ Start the backend:
 Navigate to the backend directory.
 Repo (back-end): https://github.com/MatteoOrlando/Awesome-Pizza-be
 
-Run the Spring Boot application.
+Run the Spring Boot application (IntelliJ IDEA).
 
 Start the frontend:
 
@@ -37,6 +37,8 @@ Navigate to the frontend directory.
 
 Install dependencies:
 npm install
+npm install react-icons
+npm install sweetalert2
 
 Start the development server:
 npm start
