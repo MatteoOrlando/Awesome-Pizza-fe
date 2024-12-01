@@ -90,7 +90,9 @@ function OrderForm({ orders, setOrders }) {
 
   // Remove product function
   const removeFromCart = (index) => {
+    // Filters the orders array, keeping only the elements whose index does not match the one passed as an argument.
     const updatedOrders = orders.filter((_, i) => i !== index);
+
     setOrders(updatedOrders);
   };
 

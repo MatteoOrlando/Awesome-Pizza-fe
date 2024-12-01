@@ -15,7 +15,7 @@ Tech Stack 🛠️
 
 Frontend: React, CSS (with gradients and custom styles), SweetAlert2 for alerts.
 Backend: Java Spring Boot, REST APIs.
-Database: JPA for data persistence.
+Database: JPA for data persistence, (PgAdmin 4)
 
 How to Run 🚀
 
@@ -40,9 +40,6 @@ npm install
 
 Start the development server:
 npm start
-
-Open your browser and go to:
-http://localhost:3000
 
 What You'll See 🖥️
 Home Page: Browse and add pizzas to your cart.
