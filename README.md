@@ -37,6 +37,7 @@ Navigate to the frontend directory.
 
 Install dependencies:
 npm install
+npm install react-scripts
 npm install react-icons
 npm install sweetalert2
 
