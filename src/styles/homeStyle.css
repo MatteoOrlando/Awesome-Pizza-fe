@@ -1,52 +1,8 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-
   background: linear-gradient(to top, #0b260bf0, #144f15dc);
 }
-
-.home-container {
-  background: linear-gradient(to top, #aeaeaeeb, #e5e5e5fd);
-  max-width: 1800px;
-  margin: 0px auto;
-  margin-top: 60px;
-  margin-bottom: 60px;
-  padding: 2rem 1rem;
-  border-radius: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.pizza-card {
-  border: 3px outset #da0a0ad4;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), inset 0 0 3px #da0a0ad4;
-  transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  border-radius: 15px;
-  width: calc(20% - 2rem);
-  min-width: 200px;
-}
-
-.pizza-card:hover {
-  transform: scale(1.04);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-}
-
-.pizza-img {
-  border-radius: 5%;
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-bottom: 2px solid #d6d6d6;
-  margin-bottom: 5px;
-}
-
 .card-body {
   flex: 1;
   padding: 0.5rem;
@@ -84,8 +40,6 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  background-color: #f8f9fa;
-  border-top: 1px solid #ddd;
 }
 
 .card-price {
@@ -103,15 +57,57 @@ body {
   background: linear-gradient(to top, #014185, #025bbb);
   text-decoration: none;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 15px;
   border-radius: 8px;
   transition: background-color 0.3s ease-in-out;
+}
+
+.home-container {
+  background: linear-gradient(to top, #aeaeaeeb, #e5e5e5fd);
+  max-width: 1700px;
+  margin: 0px auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 2rem 1rem;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }
 
 .card-footer button:hover {
   background: linear-gradient(to top, #004794, #026fe3);
 }
 
+.pizza-card {
+  border: 3px outset #da0a0ad4;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), inset 0 0 10px #000000;
+  transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 15px;
+  width: calc(20% - 2rem);
+  min-width: 200px;
+}
+
+.pizza-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.pizza-img {
+  border-radius: 15px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border: 1px outset #da0a0ad4;
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.6), inset 0 0 10px #000000;
+  margin-bottom: 5px;
+}
 .title-with-icon {
   display: flex;
   align-items: center;
@@ -120,61 +116,48 @@ body {
 
 .title-with-icon .icon {
   font-size: 1.5rem;
-  color: #ff4500;
+  color: #bf2811ea;
 }
 
-/*  ALERT STYLE */
+/* ---------  MODAL/ALERT STYLE --------- */
 
-.swal-custom-popup {
-  background-color: #fffbe6;
-  border: 2px solid #ff9800;
-  border-radius: 10px;
-}
-
-.swal-custom-title {
-  color: #ff5722;
-  font-weight: bold;
-}
-
-.swal-custom-button {
-  background-color: #ff9800;
-  color: white;
-  border-radius: 5px;
-  padding: 10px 20px;
-}
-
-/*  MODAL STYLE 
-
-.modal {
+.image-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.735);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-.modal-content {
+.image-modal .modal-content {
   position: relative;
-  max-width: 90%;
-  max-height: 90%;
-  background-color: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(to top, #d3d3d3eb, #eeeeeefd);
+  border: 5px outset #d00000b5;
+  border-radius: 15px;
+  padding: 35px;
+  max-width: 80%;
+  max-height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 35px rgba(0, 0, 1);
 }
 
-.modal-img {
-  display: block;
+.image-modal .modal-img {
   width: 100%;
   height: auto;
+  max-width: 800px;
+  max-height: 700px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
-.close {
+.image-modal .close {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -182,7 +165,7 @@ body {
   font-weight: bold;
   color: #fff;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.668);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -192,8 +175,71 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.close:hover {
-  background-color: rgba(255, 0, 0, 0.8);
+.image-modal .close:hover {
+  background-color: rgba(255, 0, 0, 0.713);
 }
 
-*/
+/*-------------------------*/
+
+.swal-custom-popup {
+  background: linear-gradient(to top, #ebebebd9, #ffffffef);
+  border: 4px outset #047a00c9;
+  border-radius: 10px;
+}
+
+.swal-custom-title {
+  color: #078600;
+}
+
+.swal-custom-button {
+  font-weight: bold;
+  background-color: #179800;
+  color: rgb(255, 255, 255);
+  border-radius: 7px;
+  padding: 10px 20px;
+}
+
+/* Modal Responsiveness */
+
+@media (max-width: 1240px) {
+  .image-modal .modal-content {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .image-modal .modal-img {
+    max-width: 100%;
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-modal .modal-content {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .image-modal .modal-img {
+    max-width: 90%;
+    max-height: 300px;
+  }
+}
+
+/* Card Responsiveness */
+
+@media (max-width: 1024px) {
+  .pizza-card,
+  .order-card,
+  .pick-order-card {
+    width: calc(45% - 1.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .pizza-card,
+  .order-card,
+  .pick-order-card {
+    width: calc(100% - 2rem);
+    margin: 0 auto;
+  }
+}

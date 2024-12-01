@@ -7,11 +7,12 @@ import {
   FaDrumstickBite,
 } from 'react-icons/fa';
 import { GiMushroom, GiChiliPepper } from 'react-icons/gi';
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import Swal from 'sweetalert2';
 import '../styles/homeStyle.css';
 
 function Home({ addToOrder }) {
   const [pizzas, setPizzas] = useState([]);
+  const [modalImage, setModalImage] = useState(null); // State for modal image
 
   useEffect(() => {
     const fetchPizzas = async () => {
@@ -46,16 +47,23 @@ function Home({ addToOrder }) {
     return <FaPizzaSlice className="icon" />;
   };
 
+  const handleImageClick = (imageUrl) => {
+    setModalImage(imageUrl); // Open modal with image
+  };
+
+  const closeModal = () => {
+    setModalImage(null); // Close modal
+  };
+
   const handleAddToOrder = (pizza) => {
     addToOrder(pizza);
 
-    // Show alert
     Swal.fire({
       title: 'Success!',
       text: 'The pizza is added to the order cart!',
       icon: 'success',
       confirmButtonText: 'OK',
-      timer: 2000, // Auto-close after 2 seconds
+      timer: 5000, // Auto-close after 5 seconds
       timerProgressBar: true,
       customClass: {
         popup: 'swal-custom-popup',
@@ -69,7 +77,13 @@ function Home({ addToOrder }) {
     <div className="home-container">
       {pizzas.map((pizza) => (
         <div className="pizza-card" key={pizza.id}>
-          <img src={pizza.imageUrl} alt={pizza.name} className="pizza-img" />
+          <img
+            src={pizza.imageUrl}
+            alt={pizza.name}
+            className="pizza-img"
+            onClick={() => handleImageClick(pizza.imageUrl)} // Click handler on img for modal
+            style={{ cursor: 'pointer' }}
+          />
           <div className="card-body">
             <div className="title-with-icon">
               <h5 className="card-title">{pizza.name}</h5>
@@ -78,16 +92,27 @@ function Home({ addToOrder }) {
             <p className="card-text">{pizza.description}</p>
           </div>
           <div className="card-footer">
-            <span className="card-price">${pizza.price.toFixed(2)}</span>
+            <span className="card-price">€ {pizza.price.toFixed(2)}</span>
             <button
               className="order-now"
-              onClick={() => handleAddToOrder(pizza)}
+              onClick={() => handleAddToOrder(pizza)} // Swal alert only triggered here, when btn is clicked
             >
               Order Now
             </button>
           </div>
         </div>
       ))}
+
+      {modalImage && (
+        <div className="image-modal" onClick={closeModal}>
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <img src={modalImage} alt="Pizza" className="modal-img" />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

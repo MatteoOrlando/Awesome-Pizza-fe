@@ -1,26 +1,26 @@
-.btn-primary {
+.btn-confirm {
   display: block;
   width: 18%;
   padding: 0.75rem 1rem;
   background: linear-gradient(to top, #013a77, #025bbb);
   color: rgb(198, 198, 198);
   border: none;
-  border-radius: 19px;
+  border-radius: 16px;
   cursor: pointer;
   font-size: 1.2rem;
   font-weight: bold;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-align: center;
   margin-top: 2rem;
-  margin: 1rem auto;
+  margin: 2.5rem auto;
 }
 
-.btn-primary:disabled {
-  background-color: #5e5e5e;
+.btn-confirm:disabled {
+  background-color: #717171;
   cursor: not-allowed;
 }
 
-.btn-primary:hover {
+.btn-confirm:hover {
   background: linear-gradient(to top, #00448d, #026fe3);
   color: rgb(225, 225, 225);
 }
@@ -28,7 +28,8 @@
 .btn-remove {
   margin: 0 30.5%;
   width: 40%;
-  background-color: #e60000c1;
+  background: linear-gradient(to top, #9f0000e1, #e20000cb);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), inset 0 0 2px #222222e2;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -40,7 +41,7 @@
 }
 
 .btn-remove:hover {
-  background-color: #c50000f1;
+  background: linear-gradient(to top, #d20000d0, #ff0101d7);
 }
 
 .btn-pickup {
@@ -50,7 +51,7 @@
   padding: 0.5rem 1rem;
   color: #f1f1f1;
   border: none;
-  background: linear-gradient(to top, #016c0a, #005107);
+  background: linear-gradient(to top, #007f0b, #005107);
   text-decoration: none;
   font-weight: bold;
   font-size: 15px;
@@ -58,7 +59,7 @@
   transition: background-color 0.3s ease-in-out;
 }
 .btn-pickup:hover {
-  background: linear-gradient(to top, #00820b, #005a07);
+  background: linear-gradient(to top, #00a40eea, #006e09ed);
 }
 
 .completed-orders {
@@ -66,9 +67,9 @@
 }
 
 .completed-orders h3 {
-  text-align: center;
-  margin-bottom: 1rem;
-  color: #27ae60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form-container {
@@ -88,6 +89,11 @@ h1 {
   color: #000000f7;
 }
 
+h3 {
+  margin-top: 30px;
+  font-size: 25px;
+}
+
 .no-pizza-cart {
   color: #333;
   font-size: 1.2rem;
@@ -96,17 +102,9 @@ h1 {
   font-weight: 900;
 }
 
-.order-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-bottom: 20px;
-  justify-content: center;
-}
-
 .order-card {
   border: 3px outset #da0a0ad4;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), inset 0 0 10px #da0a0ad4;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), inset 0 0 9px #222222e2;
   transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
   background-color: #fff;
   display: flex;
@@ -133,10 +131,31 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-.pick-order-card {
+.order-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.order-status {
+  text-align: center;
+  font-size: 18px;
   margin: auto;
-  border: 1px outset #da0a0ad4;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), inset 0 0 10px #da0a0ad4;
+  border: 2px outset #157f02e7;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), inset 0 0 5px #157f02e7;
+  background: linear-gradient(to top, #cbcbcbeb, #e7e7e7fd);
+  border-radius: 15px;
+  width: calc(70% - 1.5rem);
+  height: 150px;
+}
+
+.pick-order-card {
+  font-size: 18px;
+  margin: auto;
+  border: 2px outset #157f02e7;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), inset 0 0 5px #157f02e7;
   transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
   background: linear-gradient(to top, #d0d0d0eb, #e5e5e5fd);
   display: flex;
@@ -198,4 +217,193 @@ h1 {
   font-weight: bold;
   text-align: center;
   color: #000000f7;
+}
+
+/* Queue and Order List Responsiveness */
+
+@media (min-width: 1024px) {
+  .order-status {
+    width: 80%;
+  }
+
+  .list-group-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/*---TABLET----*/
+
+@media (min-width: 700px) and (max-width: 1024px) {
+  .order-card,
+  .pizza-card,
+  .pick-order-card {
+    width: calc(45% - 1rem);
+    margin: 0 auto;
+  }
+
+  .order-list {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .btn-confirm,
+  .btn-pickup,
+  .btn-complete {
+    width: 35%;
+    margin: 10px auto;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .btn-remove {
+    width: 25%;
+    margin: auto auto;
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .order-status {
+    width: 80%;
+    font-size: 1rem;
+  }
+
+  .completed-orders {
+    margin-top: 2rem;
+  }
+
+  .form-container {
+    width: 85%;
+    padding: 1rem;
+    margin: 30px auto;
+  }
+
+  .order-details {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .title-background {
+    display: none;
+  }
+}
+
+/*---Smartphone---*/
+
+@media (max-width: 699px) {
+  .btn-confirm,
+  .btn-pickup,
+  .btn-complete {
+    width: 35%;
+    margin: 20px auto;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .btn-remove {
+    width: 25%;
+    margin: auto auto;
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .completed-orders {
+    margin-top: 1rem;
+  }
+
+  .completed-orders h3 {
+    font-size: 1.2rem;
+  }
+
+  .form-container,
+  .queue-container {
+    width: 90%;
+    padding: 1rem;
+    margin: 20px auto;
+    border-radius: 10px;
+  }
+
+  .list-group-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .order-card,
+  .pizza-card,
+  .pick-order-card {
+    width: calc(100% - 2rem);
+    margin: 10px auto;
+  }
+
+  .order-details {
+    font-size: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  .image-modal .modal-content {
+    max-width: 95%;
+    max-height: 80%;
+    padding: 10px;
+  }
+
+  .image-modal .modal-img {
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: 10px;
+  }
+
+  .order-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .order-status {
+    width: 100%;
+    font-size: 1rem;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .no-pizza-cart {
+    font-size: 1rem;
+    margin: 1rem 0;
+  }
+
+  .order-info p {
+    font-size: 0.9rem;
+  }
+  .pizza-img,
+  .order-card img {
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .total {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+  }
+  .title-background {
+    display: none;
+  }
+  .total-background {
+    width: 45%;
+    height: 2rem;
+    font-size: 0.8rem;
+  }
 }

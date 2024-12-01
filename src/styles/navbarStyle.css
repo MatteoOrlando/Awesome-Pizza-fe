@@ -10,7 +10,7 @@
   height: 75px;
   width: auto;
   background: linear-gradient(to top, #aeaeaeeb, #e5e5e5fd);
-  border-bottom: 5px inset #da0a0ad4;
+  border-bottom: 4px inset #a90000de;
   box-shadow: 0 3px 10px #180701f0;
   align-items: center;
   padding: 0 30px;
@@ -19,7 +19,7 @@
 .navbar-brand-container {
   border-radius: 20px;
   box-shadow: 0 3px 10px #180701f0;
-  margin: 0 35%;
+  margin: 10px 35%;
   width: auto;
   height: 50px;
   background: linear-gradient(to top, #d5d5d5db, #969696fd);
@@ -38,17 +38,11 @@
   margin-right: auto;
 }
 
-.navbar-brand:hover,
-.navbar-brand:focus {
-  color: #0056b3;
-}
-
 .navbar-nav {
   list-style: none;
-  margin-right: 115px;
-  margin-top: -10px;
+  margin-top: -45px;
+  gap: 40%;
   display: flex;
-  gap: 50%;
   justify-content: center;
 }
 
@@ -57,18 +51,32 @@
   font-weight: bold;
   text-decoration: none;
   color: #000000b7;
-  font-size: 1.5rem;
-  transition: color 0.3s;
+  font-size: 2rem;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .nav-link:hover,
 .nav-link:focus {
   color: #000000fe;
+  transform: scale(1.1);
+}
+
+.nav-icon {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 3rem;
+  vertical-align: middle;
+  color: #1b6e1ee0;
+  transition: color 0.3s;
+}
+
+.nav-link:hover .nav-icon {
+  color: #0f3f10ed;
 }
 
 .nav-item.active .nav-link {
   color: #007bff;
-  font-weight: bold;
+  font-weight: 900;
 }
 
 .nav-item {
@@ -83,9 +91,118 @@
   border-radius: 50%;
   padding: 0.2rem 0.5rem;
   position: absolute;
-  top: -12px;
-  left: 110%;
+  top: -5px;
+  left: 105%;
   transform: translateX(-50%);
   display: inline-block;
   z-index: 1;
+}
+
+/*---- RESPONSIVENESS TABLET ---*/
+
+@media (min-width: 700px) and (max-width: 1240px) {
+  .navbar {
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .navbar-brand-container {
+    margin: auto auto;
+    text-align: left;
+    width: 80%;
+    padding: 10px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 10px;
+  }
+
+  .nav-link {
+    font-size: 1.4rem;
+  }
+
+  .nav-icon {
+    font-size: 2rem;
+  }
+}
+
+/*---- RESPONSIVENESS SMARTPHONE ---*/
+
+@media (max-width: 699px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: auto;
+    padding: 5px 15px;
+  }
+
+  .navbar-brand-container {
+    width: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto auto;
+    margin-left: 25px;
+    flex: 1;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .home-icon {
+    font-size: 2.8rem;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5rem;
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .nav-item {
+    top: 10px;
+    right: 115px;
+    position: relative;
+  }
+
+  .nav-link {
+    margin-left: -40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 0;
+  }
+
+  .nav-icon {
+    margin-left: 25px;
+    font-size: 2.5rem;
+    color: #1b6e1e;
+    cursor: pointer;
+  }
+
+  .order-badge {
+    position: absolute;
+    top: 5px;
+    font-size: 15px;
+    background: linear-gradient(to top, #00366fec, #016bdcec);
+    color: white;
+    border-radius: 50%;
+  }
 }

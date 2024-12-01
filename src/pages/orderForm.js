@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import '../styles/orderFromStyles.css';
 
 function OrderForm({ orders, setOrders }) {
@@ -31,7 +33,7 @@ function OrderForm({ orders, setOrders }) {
 
       setOrderId(result.id);
       setOrderStatus(
-        'Your order is in queue! i will receive a notification when your order is ready!.'
+        'Your order is in queue! You will receive a notification when your order is ready!.'
       );
       setOrders([]);
     } catch (error) {
@@ -70,6 +72,11 @@ function OrderForm({ orders, setOrders }) {
         title: 'Order Picked Up!',
         text: `Order Number ${orderId} has been successfully picked up.`,
         confirmButtonText: 'OK',
+        customClass: {
+          popup: 'swal-custom-popup',
+          title: 'swal-custom-title',
+          confirmButton: 'swal-custom-button',
+        },
       });
     } catch (error) {
       Swal.fire({
@@ -106,7 +113,7 @@ function OrderForm({ orders, setOrders }) {
               <img src={pizza.imageUrl} alt={pizza.name} />
               <div className="order-details">
                 <p className="pizza-name">{pizza.name}</p>
-                <p className="pizza-price">${pizza.price.toFixed(2)}</p>
+                <p className="pizza-price">€ {pizza.price.toFixed(2)}</p>
               </div>
               <button
                 className="btn-remove"
@@ -122,12 +129,12 @@ function OrderForm({ orders, setOrders }) {
       {orders.length > 0 && (
         <div className="total">
           <div className="total-background"></div>
-          <h3>Total: ${totalPrice.toFixed(2)}</h3>
+          <h3>Total: € {totalPrice.toFixed(2)}</h3>
         </div>
       )}
 
       <button
-        className="btn-primary"
+        className="btn-confirm"
         onClick={handleSubmitOrder}
         disabled={orders.length === 0}
       >
@@ -145,7 +152,17 @@ function OrderForm({ orders, setOrders }) {
 
       {completedOrders.length > 0 && (
         <div className="completed-orders">
-          <h3>Completed Orders</h3>
+          <h3>
+            Your order is ready
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              style={{
+                color: 'green',
+                marginLeft: '10px',
+                marginBottom: '3px',
+              }}
+            />
+          </h3>
           {completedOrders.map((order) => (
             <div className="pick-order-card" key={`completed-${order.id}`}>
               <p>Order Number: {order.id}</p>

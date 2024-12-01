@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AiFillHome } from 'react-icons/ai';
+import { AiFillHome, AiOutlineShoppingCart } from 'react-icons/ai';
+import { GiChefToque } from 'react-icons/gi';
 import '../styles/navbarStyle.css';
 
 function Navbar({ orderCount }) {
@@ -17,6 +18,7 @@ function Navbar({ orderCount }) {
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link className="nav-link" to="/order">
+                <AiOutlineShoppingCart className="nav-icon" />
                 Your Order
                 {orderCount > 0 && (
                   <span className="order-badge">{orderCount}</span>
@@ -25,6 +27,7 @@ function Navbar({ orderCount }) {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/queue">
+                <GiChefToque className="nav-icon" />
                 Chef's Queue
               </Link>
             </li>
