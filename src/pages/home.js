@@ -95,7 +95,7 @@ function Home({ addToOrder }) {
             <span className="card-price">€ {pizza.price.toFixed(2)}</span>
             <button
               className="order-now"
-              onClick={() => handleAddToOrder(pizza)} // Swal alert only triggered here, when btn is clicked
+              onClick={() => handleAddToOrder(pizza)} // Swal alert only triggered here, when order btn is clicked
             >
               Order Now
             </button>
